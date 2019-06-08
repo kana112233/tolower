@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>org.py.plugin.tolower</id>
     <name>toLower</name>
-    <vendor email="makey22112@gmail.com" url="https://plugins.jetbrains.com/plugin/12522-cute-ui-theme">https://github.com/kana112233/tolower.git</vendor>
+    <vendor email="makey22112@gmail.com" url="https://plugins.jetbrains.com/plugin/12524-tolower">https://github.com/kana112233/tolower.git</vendor>
 
     <description><![CDATA[
       constant field
