@@ -103,7 +103,7 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
         if (!StringUtils.isEmpty(name)) {
           String lowerText = name.toLowerCase();
           holder.registerProblem(field,
-                  "lower hint: "+lowerText, ProblemHighlightType.LIKE_UNUSED_SYMBOL);
+                  "小写提示: "+lowerText, ProblemHighlightType.LIKE_UNUSED_SYMBOL);
         }
 
         this.visitVariable(field);
