@@ -1,0 +1,17 @@
+# User-specific stuff
+.idea/**/workspace.xml
+.idea/**/dictionaries
+
+# Gradle
+.idea/**/gradle.xml
+.gradle/
+/build
+
+.idea/
+
+# no need to include modules in a gradle project
+.idea/modules
+*.iml
+
+# IntelliJ
+out/

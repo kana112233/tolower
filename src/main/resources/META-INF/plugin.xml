@@ -1,0 +1,31 @@
+<idea-plugin>
+    <id>org.py.plugin.tolower</id>
+    <name>toLower</name>
+    <vendor email="makey22112@gmail.com" url="https://plugins.jetbrains.com/plugin/12522-cute-ui-theme">https://github.com/kana112233/tolower.git</vendor>
+
+    <description><![CDATA[
+      constant field
+      Uppercase note lowercase display
+    ]]></description>
+
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <!-- uncomment to enable plugin in all products
+    <depends>com.intellij.modules.lang</depends>
+    -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection language="JAVA"
+                         displayName="MAX_COUNT  hints max_count"
+                         groupPath="Java"
+                         groupBundle="messages.InspectionsBundle"
+                         groupKey="group.names.probable.bugs"
+                         enabledByDefault="true"
+                         level="INFO"
+                         implementationClass="org.py.plugin.codeInspection.ToLowerInspection"/>
+    </extensions>
+
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
+</idea-plugin>
