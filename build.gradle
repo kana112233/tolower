@@ -41,5 +41,6 @@ patchPluginXml {
         constant field
       Uppercase note lowercase display
       大写的常量显示小写，方便观看<br>
+      <span>v1.0.4 fix NullPointException  提示改成英文 </span>
       <em></em>"""
 }
