@@ -16,7 +16,7 @@ apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 
 group 'org.py.plugin'
-version '1.0.1'
+version '1.0.4'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -38,6 +38,8 @@ intellij {
 }
 patchPluginXml {
     changeNotes """
+        constant field
+      Uppercase note lowercase display
       大写的常量显示小写，方便观看<br>
       <em></em>"""
 }
