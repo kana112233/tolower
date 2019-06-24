@@ -16,7 +16,7 @@ apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 
 group 'org.py.plugin'
-version '1.0.4'
+version '1.0.5'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -38,9 +38,11 @@ intellij {
 }
 patchPluginXml {
     changeNotes """
-        constant field
+       <span>v1.0.5 fix constant cast error  null error </span>
+       <span>v1.0.4 fix NullPointException  提示改成英文 </span>
+      
+      constant field
       Uppercase note lowercase display
-      大写的常量显示小写，方便观看<br>
-      <span>v1.0.4 fix NullPointException  提示改成英文 </span>
-      <em></em>"""
+      大写的常量显示小写，方便观看<br
+      """
 }
