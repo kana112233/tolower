@@ -23,7 +23,7 @@
                          groupKey="group.names.probable.bugs"
                          enabledByDefault="true"
                          level="INFO"
-                         implementationClass="org.py.plugin.codeInspection.ToLowerInspection"/>
+                         implementationClass="org.py.plugin.codeinspection.ToLowerInspection"/>
     </extensions>
 
     <actions>

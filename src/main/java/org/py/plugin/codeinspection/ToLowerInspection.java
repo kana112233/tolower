@@ -1,4 +1,4 @@
-package org.py.plugin.codeInspection;
+package org.py.plugin.codeinspection;
 
 import com.intellij.codeInspection.AbstractBaseJavaLocalInspectionTool;
 import com.intellij.codeInspection.ProblemHighlightType;
@@ -16,14 +16,13 @@ import java.awt.*;
 import java.util.regex.Pattern;
 
 /**
- * @author max
- * @author jhake
+ *
  */
 public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
   // This string holds a list of classes relevant to this inspection.
 
   @NonNls
-  private String CHECKED_CLASSES = "java.lang.String;java.util.Date";
+  private String myCheckedClasses = "java.lang.String;java.util.Date";
 
   /**
    * This method is called to get the panel describing the inspection.
@@ -36,11 +35,11 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
   @Override
   public JComponent createOptionsPanel() {
     JPanel panel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-    final JTextField checkedClasses = new JTextField(CHECKED_CLASSES);
+    final JTextField checkedClasses = new JTextField(myCheckedClasses);
     checkedClasses.getDocument().addDocumentListener(new DocumentAdapter() {
       @Override
       public void textChanged(@NotNull DocumentEvent event) {
-        CHECKED_CLASSES = checkedClasses.getText();
+          myCheckedClasses = checkedClasses.getText();
       }
     });
     panel.add(checkedClasses);
@@ -78,13 +77,15 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
       @Override
       public void visitReferenceExpression(PsiReferenceExpression expression) {
           String referenceName = expression.getReferenceName();
-          if (null != referenceName && "".equals(referenceName)) {
+          if ("".equals(referenceName)) {
               return;
           }
           if(expression.getElement() instanceof PsiEnumConstant ) {
+              assert referenceName != null;
               String lowerText = referenceName.toLowerCase();
               holder.registerProblem(expression, "tip: "+lowerText, ProblemHighlightType.LIKE_UNUSED_SYMBOL );
           }else{
+              assert referenceName != null;
               if (isNumeric(referenceName)) {
                   return;
               }
@@ -100,7 +101,6 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
       @Override
       public void visitField(PsiField field) {
           if(field instanceof PsiEnumConstant){
-//              PsiEnumConstantImpl psiEnumConstant = (PsiEnumConstantImpl) field;
               String name = field.getName();
               if (!StringUtils.isEmpty(name)) {
                   String lowerText = name.toLowerCase();
@@ -111,9 +111,6 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
 
           }else if(field instanceof PsiFieldImpl){
               PsiFieldImpl psiField = (PsiFieldImpl) field;
-              if (null == psiField) {
-                  return;
-              }
               PsiModifierList modifierList = psiField.getModifierList();
 
               if( !modifierList.hasModifierProperty(PsiModifier.FINAL) ){
@@ -130,8 +127,6 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
                           "tip: "+lowerText, ProblemHighlightType.LIKE_UNKNOWN_SYMBOL);
               }
               this.visitVariable(field);
-          }else {
-
           }
 
       }
