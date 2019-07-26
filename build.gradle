@@ -9,6 +9,7 @@ buildscript {
 plugins {
     id 'java'
     id 'org.jetbrains.intellij' version '0.4.7'
+	id "org.sonarqube" version "2.7"
 }
 
 apply plugin: 'idea'
