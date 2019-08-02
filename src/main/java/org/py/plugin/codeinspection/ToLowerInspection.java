@@ -9,14 +9,16 @@ import com.intellij.ui.DocumentAdapter;
 import org.apache.commons.lang.StringUtils;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
+import org.py.plugin.codeinspection.utils.Tools;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import java.awt.*;
-import java.util.regex.Pattern;
+
+import static org.py.plugin.codeinspection.utils.Tools.isNumeric;
 
 /**
- *
+ * show note on constant
  */
 public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
   // This string holds a list of classes relevant to this inspection.
@@ -46,18 +48,6 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
     return panel;
   }
 
-  private static boolean isNumeric(@NotNull String str){
-    if (StringUtils.isEmpty(str)) {
-      return false;
-    }
-    for(int i=str.length();--i>=0;){
-      int chr=str.charAt(i);
-      if (chr < 48 || chr > 57) {
-        return false;
-      }
-    }
-    return true;
-  }
 
   /**
    * This method is overridden to provide a custom visitor
@@ -89,7 +79,7 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
               if (isNumeric(referenceName)) {
                   return;
               }
-              boolean matches = Pattern.matches("_?[A-Z,0-9]{2,20}(_?[A-Z,0-9]{2,20}){0,6}", referenceName);
+              boolean matches = Tools.isConst(referenceName);
               if (matches) {
                   String lowerText = referenceName.toLowerCase();
                   holder.registerProblem(expression, "tip: "+lowerText, ProblemHighlightType.LIKE_UNUSED_SYMBOL );
