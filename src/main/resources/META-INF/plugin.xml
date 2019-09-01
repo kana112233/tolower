@@ -16,6 +16,12 @@
     <depends>com.intellij.modules.lang</depends>
 
     <extensions defaultExtensionNs="com.intellij">
+        <defaultLiveTemplatesProvider implementation="org.py.plugin.template.TestTemplateProvider"/>
+        <liveTemplateContext implementation="org.py.plugin.template.TestContext"/>
+
+        <defaultLiveTemplatesProvider implementation="org.py.plugin.template.groovy.TestTemplateProvider"/>
+        <liveTemplateContext implementation="org.py.plugin.template.groovy.TestContext"/>
+
         <localInspection language="JAVA"
                          displayName="MAX_COUNT  hints max_count"
                          groupPath="Java"
