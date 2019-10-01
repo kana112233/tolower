@@ -14,6 +14,9 @@
     <depends>com.intellij.modules.lang</depends>
     -->
     <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
+
+    <idea-version since-build="192.0"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <defaultLiveTemplatesProvider implementation="org.py.plugin.template.TestTemplateProvider"/>
