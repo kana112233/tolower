@@ -4,8 +4,8 @@
     <vendor email="makey22112@gmail.com" url="https://plugins.jetbrains.com/plugin/12524-tolower">https://github.com/kana112233/tolower.git</vendor>
 
     <description><![CDATA[
-      constant field
-      Uppercase note lowercase display
+      Java Groovy test template
+      public void testXXX(){}
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -25,14 +25,18 @@
         <defaultLiveTemplatesProvider implementation="org.py.plugin.template.groovy.TestTemplateProvider"/>
         <liveTemplateContext implementation="org.py.plugin.template.groovy.TestContext"/>
 
-        <localInspection language="JAVA"
+      <!--  <localInspection language="JAVA"
                          displayName="MAX_COUNT  hints max_count"
                          groupPath="Java"
                          groupBundle="messages.InspectionsBundle"
                          groupKey="group.names.probable.bugs"
                          enabledByDefault="true"
                          level="INFO"
-                         implementationClass="org.py.plugin.codeinspection.ToLowerInspection"/>
+                         implementationClass="org.py.plugin.codeinspection.ToLowerInspection"/>-->
+
+       <!-- <codeInsight.parameterNameHints
+                language="JAVA"
+                implementationClass="org.py.plugin.MyInlayParameterHintsProvider"/>-->
     </extensions>
 
     <actions>

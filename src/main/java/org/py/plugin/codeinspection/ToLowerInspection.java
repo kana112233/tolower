@@ -18,7 +18,7 @@ import java.awt.*;
 import static org.py.plugin.codeinspection.utils.Tools.isNumeric;
 
 /**
- * show note on constant
+ * show tip on constant
  */
 public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
     // This string holds a list of classes relevant to this inspection.
@@ -67,22 +67,21 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
             @Override
             public void visitReferenceExpression(PsiReferenceExpression expression) {
                 String referenceName = expression.getReferenceName();
+                if (referenceName == null) {
+                    return;
+                }
                 if ("".equals(referenceName)) {
                     return;
                 }
                 if (expression.getElement() instanceof PsiEnumConstant) {
-                    assert referenceName != null;
-                    String lowerText = referenceName.toLowerCase();
-                    holder.registerProblem(expression, "tip: " + lowerText, ProblemHighlightType.LIKE_UNUSED_SYMBOL);
+                    showProblem(expression, referenceName);
                 } else {
-                    assert referenceName != null;
                     if (isNumeric(referenceName)) {
                         return;
                     }
                     boolean matches = Tools.isConst(referenceName);
                     if (matches) {
-                        String lowerText = referenceName.toLowerCase();
-                        holder.registerProblem(expression, "tip: " + lowerText, ProblemHighlightType.LIKE_UNUSED_SYMBOL);
+                        showProblem(expression, referenceName);
                     }
                 }
 
@@ -91,13 +90,7 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
             @Override
             public void visitField(PsiField field) {
                 if (field instanceof PsiEnumConstant) {
-                    String name = field.getName();
-                    if (!StringUtils.isEmpty(name)) {
-                        String lowerText = name.toLowerCase();
-                        holder.registerProblem(field,
-                                "tip: " + lowerText, ProblemHighlightType.LIKE_UNKNOWN_SYMBOL);
-                    }
-                    this.visitVariable(field);
+                    showTip(field);
 
                 } else if (field instanceof PsiFieldImpl) {
                     PsiFieldImpl psiField = (PsiFieldImpl) field;
@@ -110,16 +103,27 @@ public class ToLowerInspection extends AbstractBaseJavaLocalInspectionTool {
                         return;
                     }
 
-                    String name = field.getName();
-                    if (!StringUtils.isEmpty(name)) {
-                        String lowerText = name.toLowerCase();
-                        holder.registerProblem(field,
-                                "tip: " + lowerText, ProblemHighlightType.LIKE_UNKNOWN_SYMBOL);
-                    }
-                    this.visitVariable(field);
+                    showTip(field);
                 }
 
             }
+
+            private void showTip(PsiField field) {
+                String name = field.getName();
+                if (!StringUtils.isEmpty(name)) {
+                    String lowerText = name.toLowerCase();
+                    holder.registerProblem(field,
+                            "tip: " + lowerText, ProblemHighlightType.INFORMATION);
+                }
+                this.visitVariable(field);
+            }
+
+            private void showProblem(PsiReferenceExpression expression, String referenceName) {
+                String lowerText = referenceName.toLowerCase();
+                holder.registerProblem(expression, "tip: " + lowerText, ProblemHighlightType.INFORMATION);
+            }
         };
     }
+
+
 }

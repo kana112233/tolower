@@ -20,4 +20,32 @@
         </context>
     </template>
 
+    <template name="beforeAll" value="@BeforeAll&#10;static void beforeAll$TEXT$() {&#10;  $END$&#10;}&#10;" description="create @BeforeAll method." toReformat="true" toShortenFQNames="true">
+        <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA" value="true" />
+        </context>
+    </template>
+
+    <template name="beforeEach" value="@BeforeEach&#10;void beforeEach$TEXT$() {&#10;  $END$&#10;}&#10;" description="create @BeforeEach method." toReformat="true" toShortenFQNames="true">
+        <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA" value="true" />
+        </context>
+    </template>
+
+    <template name="afterEach" value="@AfterEach&#10;void afterEach$TEXT$() {&#10;  $END$&#10;}&#10;" description="create @AfterEach method." toReformat="true" toShortenFQNames="true">
+        <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA" value="true" />
+        </context>
+    </template>
+
+    <template name="afterAll" value="@AfterAll&#10;static void afterAll$TEXT$() {&#10;  $END$&#10;}&#10;" description="create @AfterAll method." toReformat="true" toShortenFQNames="true">
+        <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true" />
+        <context>
+            <option name="JAVA" value="true" />
+        </context>
+    </template>
+
 </templateSet>

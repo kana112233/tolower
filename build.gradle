@@ -1,6 +1,7 @@
 buildscript {
     repositories {
-        mavenCentral()
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         jcenter()
         maven { url 'http://dl.bintray.com/jetbrains/intellij-plugin-service' }
@@ -18,13 +19,15 @@ apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 
 group 'org.py.plugin'
-version '1.2.2'
+version '1.3.1'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
     repositories {
+        mavenLocal()
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
         jcenter()
         mavenCentral()
     }
@@ -39,20 +42,18 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version '2019.2.2'
+    version '2019.3.4'
     plugins = ['java']
 }
 patchPluginXml {
     changeNotes """
         <ul>
         <li>v1.2.1 add test template </li>
-        <li>v1.0.5 fix constant cast error  null error </li>
-        <li>v1.0.4 fix NullPointException  提示改成英文</li>
         </ul>
-        <h3>
-      constant field
-      Uppercase note lowercase display
-      大写的常量显示小写，方便观看  </h3>
+        <h3> feature </h3>
+          1. java test live template(junit4 junit5) <br>
+          2. groovy test live template <br>
+     
       """
 }
 
