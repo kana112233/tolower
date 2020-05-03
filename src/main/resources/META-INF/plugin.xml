@@ -16,7 +16,7 @@
     <depends>com.intellij.modules.lang</depends>
     <depends>com.intellij.modules.java</depends>
 
-    <idea-version since-build="192.0"/>
+    <idea-version since-build="201.6668" until-build="201.*"/>
 
     <extensions defaultExtensionNs="com.intellij">
         <defaultLiveTemplatesProvider implementation="org.py.plugin.template.TestTemplateProvider"/>
@@ -25,18 +25,6 @@
         <defaultLiveTemplatesProvider implementation="org.py.plugin.template.groovy.TestTemplateProvider"/>
         <liveTemplateContext implementation="org.py.plugin.template.groovy.TestContext"/>
 
-      <!--  <localInspection language="JAVA"
-                         displayName="MAX_COUNT  hints max_count"
-                         groupPath="Java"
-                         groupBundle="messages.InspectionsBundle"
-                         groupKey="group.names.probable.bugs"
-                         enabledByDefault="true"
-                         level="INFO"
-                         implementationClass="org.py.plugin.codeinspection.ToLowerInspection"/>-->
-
-       <!-- <codeInsight.parameterNameHints
-                language="JAVA"
-                implementationClass="org.py.plugin.MyInlayParameterHintsProvider"/>-->
     </extensions>
 
     <actions>

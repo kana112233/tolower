@@ -19,7 +19,7 @@ apply plugin: 'org.jetbrains.intellij'
 apply plugin: 'java'
 
 group 'org.py.plugin'
-version '1.3.1'
+version '1.3.2'
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -27,8 +27,8 @@ targetCompatibility = JavaVersion.VERSION_1_8
 repositories {
     repositories {
         mavenLocal()
-        maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
         jcenter()
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
         mavenCentral()
     }
 }
@@ -42,21 +42,27 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version '2019.3.4'
+    version '2020.1'
     plugins = ['java']
 }
 patchPluginXml {
     changeNotes """
         <ul>
-        <li>v1.2.1 add test template </li>
+        <li>v1.3.2: Upgrade 2020.x.y </li>
+        <li>v1.3.1: Add JUnit5 </li>
+        <li>v1.2.1: Add test template </li>
         </ul>
-        <h3> feature </h3>
-          1. java test live template(junit4 junit5) <br>
-          2. groovy test live template <br>
+        <h3> Feature </h3>
+          1. Java test live template(JUnit4 JUnit5) <br>
+          2. Groovy test live template <br>
      
       """
 }
 
 tasks.withType(JavaCompile) {
     options.encoding = "UTF-8"
+}
+
+publishPlugin {
+    token = System.getenv("ORG_GRADLE_PROJECT_intellijPublishToken")
 }
