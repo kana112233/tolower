@@ -1,15 +1,41 @@
 # tolower
 
-idea 插件 显示大写常量的小写提示
+Idea Plugin Java Test, Groovy Test
 
-加入测试live tempalte
-
-输入 test 回车生成代码
+```
+// Java
+// 输入 test 回车生成代码, 下面类似
+// test
 @Test
-public test(){
+public void test(){
+    
+}
+// beforeAll
+@BeforeAll
+static void beforeAll() {
+    
+}
+// beforeEach
+@BeforeEach
+void beforeEach() {
+    
+}
+// afterEach
+@AfterEach
+void afterEach() {
+    
+}
+// afterAll
+@AfterAll
+static void afterAll() {
     
 }
 
+// Groovy GroovyTestCase
+// def
+def ""() {
+        
+}
 
 
-https://plugins.jetbrains.com/plugin/12524-tolower
+```
