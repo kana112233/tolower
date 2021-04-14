@@ -6,6 +6,9 @@ Idea Plugin Java Test, Groovy Test
 // Java
 // 输入 test 回车生成代码, 下面类似
 // test
+/**
+ * {@link }
+ */
 @Test
 public void test(){
     

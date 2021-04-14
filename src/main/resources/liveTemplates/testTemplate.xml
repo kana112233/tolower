@@ -1,5 +1,5 @@
 <templateSet group="TEST">
-    <template name="test" value="@Test&#10;public void test$TEXT$() {&#10;  $END$&#10;}&#10;" description="create @Test method." toReformat="true" toShortenFQNames="true">
+    <template name="test" value="/**&#10; * {@link $TYPE$}&#10; */&#10;@Test&#10;public void test$TEXT$() {&#10;  $END$&#10;}&#10;" description="create @Test method." toReformat="true" toShortenFQNames="true">
         <variable name="TEXT" expression="" defaultValue="" alwaysStopAt="true" />
         <context>
             <option name="JAVA" value="true" />
